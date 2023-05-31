@@ -1,3 +1,6 @@
+import csv
+
+
 class Item:
     """
     Класс для представления товара в магазине.
@@ -20,8 +23,9 @@ class Item:
 
         Item.all.append(self)
 
-        @classmethod
-        def instantiate_from_csv(cls) -> None:
+
+    @classmethod
+    def instantiate_from_csv(cls) -> None:
             """
             Инициализирует экземпляры класса,
             получая объекты из csv файла
@@ -35,9 +39,26 @@ class Item:
             except FileNotFoundError:
                 print("Файл не найден")
 
-        @staticmethod
-        def string_to_number():
-            return int(str)
+    @staticmethod
+    def string_to_number():
+        return int(str)
+
+
+    @property
+    def name(self):
+        """Возвращает наименование товара"""
+        return self.name
+
+
+
+    @name.setter
+    @name.setter
+    def name(self, name_inp: str) -> None:
+        """Сеттер для записей атрибутов класса"""
+        if len(name_inp) <= 10:
+            self.__name = name_inp
+        else:
+            raise Exception("Наименование товара превышает 10 символов")
 
     def calculate_total_price(self) -> float:
         """
