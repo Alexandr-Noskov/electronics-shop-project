@@ -50,8 +50,6 @@ class Item:
         return self.name
 
 
-
-    @name.setter
     @name.setter
     def name(self, name_inp: str) -> None:
         """Сеттер для записей атрибутов класса"""
