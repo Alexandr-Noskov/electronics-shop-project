@@ -2,9 +2,8 @@ import csv
 
 
 class Item:
-    """
-    Класс для представления товара в магазине.
-    """
+    """Класс для представления товара в магазине."""
+
     pay_rate = 1.0
     all = []
 
@@ -26,22 +25,21 @@ class Item:
 
     @classmethod
     def instantiate_from_csv(cls) -> None:
-            """
-            Инициализирует экземпляры класса,
-            получая объекты из csv файла
-            """
-            cls.all.clear()
-            try:
-                with open(cls.CSV, newline='') as csvfile:
-                    reader = csv.DictReader(csvfile)
-                    for row in reader:
-                        cls(row['name'], row['price'], row['quantity'])
-            except FileNotFoundError:
-                print("Файл не найден")
+        """Инициализирует экземпляры класса, получая объекты из csv файла."""
+
+        cls.all.clear()
+        try:
+            with open(cls.CSV, newline='') as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    cls(row['name'], row['price'], row['quantity'])
+        except FileNotFoundError:
+            print("Файл не найден")
 
     @staticmethod
-    def string_to_number():
-        return int(str)
+    def string_to_number(line):
+        numb = int(float(line))
+        return numb
 
 
     @property
@@ -66,8 +64,16 @@ class Item:
         """
         return self.quantity * self.price
 
-    def apply_discount(self) -> None:
-        """
-        Применяет установленную скидку для конкретного товара.
-        """
-        self.price *= self.pay_rate
+    def apply_discount(self, total_price=None, pay_rate=None) -> None:
+        """Применяет установленную скидку для конкретного товара."""
+        return self.price * self.pay_rate
+
+
+    def __repr__(self):
+        """Метод repr возвращает строку с данными, которые мы зададим. Ввел данные по требованиям в файле main"""
+        return f"{self.__class__.__name__}('{self.name}', '{self.price}', {self.quantity})"
+
+
+    def __str__(self):
+        """Вывод пользовательской информации"""
+        return self.name

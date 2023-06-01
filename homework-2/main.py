@@ -2,6 +2,8 @@ from src.item import Item
 
 if __name__ == '__main__':
     item = Item('Телефон', 10000, 5)
+    #assert repr(item1) == "Item('Смартфон', 10000, 20)"
+    #assert str(item1) == 'Смартфон'
 
     # длина наименования товара меньше 10 символов
     item.__name = 'Смартфон'
