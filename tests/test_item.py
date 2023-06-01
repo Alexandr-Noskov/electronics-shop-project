@@ -27,3 +27,9 @@ def test_instantiate_from_csv(cls) -> None:
 
 def test_string_to_number():
     assert Item.string_to_number('5') == 5
+
+
+def test_name_too_long_len(item):
+    """Название товара слишком длинное"""
+    with pytest.raises(Exception):
+        item.name = 'ТелефонТелефонТелефон'
