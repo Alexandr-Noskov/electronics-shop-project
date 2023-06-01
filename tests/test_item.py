@@ -33,3 +33,9 @@ def test_name_too_long_len(item):
     """Название товара слишком длинное"""
     with pytest.raises(Exception):
         item.name = 'ТелефонТелефонТелефон'
+
+def test__repr__():
+    assert repr(item1) == "Item('Смартфон', 10000, 20)"
+
+def test__str__():
+    assert str(item1) == 'Смартфон'
