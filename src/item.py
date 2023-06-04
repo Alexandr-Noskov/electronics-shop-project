@@ -64,7 +64,7 @@ class Item:
         """
         return self.quantity * self.price
 
-    def apply_discount(self, total_price=None, pay_rate=None) -> None:
+    def apply_discount(self) -> float:
         """Применяет установленную скидку для конкретного товара."""
         return self.price * self.pay_rate
 
@@ -82,3 +82,6 @@ class Item:
         if issubclass(other.__class__, self.__class__):
             return int(self.quantity) + int(other.quantity)
         raise ValueError("Складывать можно только экземпляры классов Item и Phone")
+
+item = Item('name', 0, 0)
+print((repr(item)))
