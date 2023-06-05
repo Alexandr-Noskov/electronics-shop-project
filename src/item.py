@@ -44,8 +44,8 @@ class Item:
 
     @property
     def name(self):
-        """Возвращает наименование товара"""
-        return self.name
+        """Геттер для работы с .__name"""
+        return self.__name
 
 
     @name.setter
