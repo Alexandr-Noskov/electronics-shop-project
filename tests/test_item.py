@@ -10,7 +10,7 @@ from src.phone import Phone
 
 @pytest.fixture
 def item():
-    return Item("Смартфон", 10000, 20)
+    return item("Смартфон", 10000, 20)
 
 @pytest.fixture()
 def make_phone():
@@ -20,11 +20,11 @@ def test_init(item):
     assert item.quantity == 20
 
 def test_calculate_total_price(item):
-    assert Item.calculate_total_price() == 200000
+    assert item.calculate_total_price() == 200000
 
 def test_apply_discount(item):
-        Item.apply_discount()
-        assert Item.price == 10000.0
+        item.apply_discount()
+        assert item.price == 10000.0
 
 
 def test_instantiate_from_csv(cls) -> None:
