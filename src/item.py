@@ -20,8 +20,6 @@ class Item:
         self.quantity = int(quantity)
         self.all.append(self)
 
-        Item.all.append(self)
-
 
     @classmethod
     def instantiate_from_csv(cls) -> None:
