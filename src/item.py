@@ -58,7 +58,7 @@ class Item:
         """
         Рассчитывает общую стоимость конкретного товара в магазине.
 
-        :return: Общая стоимость товара.
+        #return: Общая стоимость товара.
         """
         return self.quantity * self.price
 
@@ -69,7 +69,7 @@ class Item:
 
     def __repr__(self):
         """Метод repr возвращает строку с данными, которые мы зададим. Ввел данные по требованиям в файле main"""
-        return f"{self.__class__.__name__}('{self.name}', {self.price}, {self.quantity})"
+        return f"{self.__class__.__name__}('{self.name}', \'{self.price}', \'{self.quantity}')"
 
 
     def __str__(self):
@@ -82,4 +82,4 @@ class Item:
         raise ValueError("Складывать можно только экземпляры классов Item и Phone")
 
 item = Item('name', 0, 0)
-print((repr(item)))
+print(repr(item))
