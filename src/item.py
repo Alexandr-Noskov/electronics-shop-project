@@ -23,19 +23,23 @@ class Item:
     @classmethod
     def instantiate_from_csv(cls, filename: str):
         """Метод для работы с csv файлом и обработкой исключений"""
+        try:
+            with open(filename, encoding='UTF-8', newline='') as file:
+                file_info = csv.DictReader(file)
+                for info in file_info:
+                    if list(info.keys()) == ["name", "price", "quantity"]:
+                        cls(info['name'], float(info['price']), int(info['quantity']))
 
-        with open(filename, encoding='UTF-8', newline='') as file:
-            file_info = csv.DictReader(file)
-            for info in file_info:
-                if list(info.keys()) == ["name", "price", "quantity"]:
-                 cls(info['name'], float(info['price']), int(info['quantity']))
-                else:
-                    raise InstantiateCSVError
-                    print("Отсутствует файл items.csv")
-                    return "Отсутствует файл items.csv"
-                except InstantiateCSVError as error:
-                    print(error)
-                    return error.__str__()
+                    else:
+                        raise InstantiateCSVError
+
+                    except FileNotFoundError:
+                        print("Отсутствует файл items.csv")
+                        return "Отсутствует файл items.csv"
+
+                    except InstantiateCSVError as error:
+                        print(error)
+                        return error.__str__()
 
 class InstantiateCSVError(Exception):
     """Создан класс для исключений"""
