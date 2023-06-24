@@ -33,13 +33,13 @@ class Item:
                     else:
                         raise InstantiateCSVError
 
-                    except FileNotFoundError:
-                        print("Отсутствует файл items.csv")
-                        return "Отсутствует файл items.csv"
+        except FileNotFoundError:
+                print("Отсутствует файл items.csv")
+                return "Отсутствует файл items.csv"
 
-                    except InstantiateCSVError as error:
-                        print(error)
-                        return error.__str__()
+        except InstantiateCSVError as error:
+            print(error)
+            return error.__str__()
 
 class InstantiateCSVError(Exception):
     """Создан класс для исключений"""
